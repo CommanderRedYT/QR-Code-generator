@@ -275,10 +275,10 @@ const char *QrSegment::ALPHANUMERIC_CHARSET = "0123456789ABCDEFGHIJKLMNOPQRSTUVW
 tl::expected<int, std::string> QrCode::getFormatBits(Ecc ecl)
 {
 	switch (ecl) {
-		case Ecc::LOW     :  return 1;
-		case Ecc::MEDIUM  :  return 0;
-		case Ecc::QUARTILE:  return 3;
-		case Ecc::HIGH    :  return 2;
+		case Ecc::ECC_LOW     :  return 1;
+		case Ecc::ECC_MEDIUM  :  return 0;
+		case Ecc::ECC_QUARTILE:  return 3;
+		case Ecc::ECC_HIGH    :  return 2;
         default:  return tl::make_unexpected("Unreachable");
 	}
 }
@@ -339,7 +339,7 @@ tl::expected<QrCode, std::string> QrCode::encodeSegments(const std::vector<QrSeg
 	assert(dataUsedBits != -1);
 	
 	// Increase the error correction level while the data still fits in the current version number
-	for (Ecc newEcl : {Ecc::MEDIUM, Ecc::QUARTILE, Ecc::HIGH})  // From low to high
+	for (Ecc newEcl : {Ecc::ECC_MEDIUM, Ecc::ECC_QUARTILE, Ecc::ECC_HIGH})  // From low to high
     {
         if (auto numDataCodewords = getNumDataCodewords(version, newEcl); numDataCodewords)
         {

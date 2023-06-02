@@ -242,11 +242,11 @@ class QrCode final {
 	/*
 	 * The error correction level in a QR Code symbol.
 	 */
-	public: enum class Ecc {
-		LOW = 0 ,  // The QR Code can tolerate about  7% erroneous codewords
-		MEDIUM  ,  // The QR Code can tolerate about 15% erroneous codewords
-		QUARTILE,  // The QR Code can tolerate about 25% erroneous codewords
-		HIGH    ,  // The QR Code can tolerate about 30% erroneous codewords
+    public: enum class Ecc {
+		ECC_LOW = 0 ,  // The QR Code can tolerate about  7% erroneous codewords
+		ECC_MEDIUM  ,  // The QR Code can tolerate about 15% erroneous codewords
+		ECC_QUARTILE,  // The QR Code can tolerate about 25% erroneous codewords
+		ECC_HIGH    ,  // The QR Code can tolerate about 30% erroneous codewords
 	};
 
 
